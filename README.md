@@ -2,7 +2,8 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/koznobikhin/OzStringKit)
 [![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
-[![License](https://img.shields.io/github/license/koznobikhin/OzStringKit)](LICENSE)
+![Cocoapods](https://img.shields.io/cocoapods/v/OzStringKit)
+[![License](https://img.shields.io/github/license/koznobikhin/OzStringKit)](https://github.com/koznobikhin/OzStringKit/blob/master/LICENSE)
 
 NSAttributedString creation with Swift 5 string interpolation
 
@@ -62,4 +63,4 @@ Konstantin Oznobikhin
 
 ## License
 
-OzStringKit is available under the MIT license. See [the LICENSE file](LICENSE) for more information.
+OzStringKit is available under the MIT license. See [the LICENSE file](https://github.com/koznobikhin/OzStringKit/blob/master/LICENSE) for more information.
