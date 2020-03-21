@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name           = 'OzStringKit'
-    s.version        = '0.0.1'
+    s.version        = '0.0.2'
     s.summary        = 'NSAttributedString creation with Swift 5 string interpolation.'
     s.homepage       = 'https://github.com/koznobikhin/OzStringKit'
     s.license        = { :type => 'MIT', :file => 'LICENSE' }
@@ -20,6 +20,6 @@ OzStringKit leverages ExpressibleByStringInterpolation API from Swift 5
 to allow creation of NSAttributedString objects with simple and concise syntax.
                          DESC
 
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+    s.screenshots     = 'https://github.com/koznobikhin/OzStringKit/raw/master/demo.png'
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 end
