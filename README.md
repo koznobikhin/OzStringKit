@@ -54,7 +54,7 @@ If you are already using [CocoaPods](http://cocoapods.org), just add 'OzStringKi
 For more detailed usage and installation instructions, visit their website.
 
 ```ruby
-pod 'OzStringKit', :git => 'https://github.com/koznobikhin/OzStringKit.git'
+pod 'OzStringKit'
 ```
 
 ## Author
