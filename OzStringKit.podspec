@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name           = 'OzStringKit'
-    s.version        = '0.0.6'
+    s.version        = '0.0.7'
     s.summary        = 'NSAttributedString creation with Swift 5 string interpolation.'
     s.homepage       = 'https://github.com/koznobikhin/OzStringKit'
     s.license        = { :type => 'MIT' }
@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
     s.tvos.deployment_target = '9.0'
 
     s.source_files   = 'Sources/OzStringKit/**/*.swift'
+    s.osx.source_files = 'Sources/OzStringKit/MacOS/**/*.swift'
     s.exclude_files  = 'iOS Example/**/*.*', 'Tests/**/*.swift'
 
     s.swift_version = "5.0"
