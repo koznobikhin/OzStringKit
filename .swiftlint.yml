@@ -1,5 +1,6 @@
 disabled_rules:
   - trailing_comma
+  - line_length # prevents triggering on documentation comments
 
 excluded:
   - iOS Example
