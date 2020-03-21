@@ -1,7 +1,8 @@
 # OzStringKit
-NSAttributedString creation with Swift 5 string interpolation.
+NSAttributedString creation with Swift 5 string interpolation
 
-(demo.png)
+![Screen shot](demo.png)
+
 
 ## Installation
 
