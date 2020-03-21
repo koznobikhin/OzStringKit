@@ -4,6 +4,12 @@ OzStringKit adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Master](https://github.com/koznobikhin/OzStringKit)
 
+# [0.0.5] - 2020-03-21
+
+### Changed
+
+conditionally disable facilities unsupported on watchOS
+
 # [0.0.4] - 2020-03-21
 
 ### Added
