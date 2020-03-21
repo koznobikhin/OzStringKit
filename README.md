@@ -1,4 +1,5 @@
 # OzStringKit
+![Travis (.com)](https://img.shields.io/travis/com/koznobikhin/OzStringKit)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/koznobikhin/OzStringKit)
 [![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
