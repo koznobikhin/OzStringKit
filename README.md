@@ -1,9 +1,9 @@
 # OzStringKit
-![Travis (.com)](https://img.shields.io/travis/com/koznobikhin/OzStringKit)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/koznobikhin/OzStringKit)
+[![Travis (.com)](https://img.shields.io/travis/com/koznobikhin/OzStringKit)](https://travis-ci.com/github/koznobikhin/OzStringKit)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/koznobikhin/OzStringKit)](https://github.com/koznobikhin/OzStringKit/releases/tag/0.0.6)
 [![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
-![Cocoapods](https://img.shields.io/cocoapods/v/OzStringKit)
+[![Cocoapods](https://img.shields.io/cocoapods/v/OzStringKit)](https://cocoapods.org/pods/OzStringKit)
 ![Platforms](https://img.shields.io/cocoapods/p/OzStringKit)
 [![License](https://img.shields.io/github/license/koznobikhin/OzStringKit)](https://github.com/koznobikhin/OzStringKit/blob/master/LICENSE.txt)
 
