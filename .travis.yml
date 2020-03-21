@@ -6,7 +6,7 @@ env:
   - IOS_FRAMEWORK_SCHEME="iOS Example"
   - EXAMPLE_SCHEME="iOS Example"
   matrix:
-    - DESTINATION="platform=iOS Simulator,OS=13.1,name=iPhone 11 Pro"
+    - DESTINATION="platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro"
       SCHEME="$IOS_FRAMEWORK_SCHEME"
 script:
   - set -o pipefail
