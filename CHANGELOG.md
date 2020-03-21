@@ -10,6 +10,7 @@ OzStringKit adheres to [Semantic Versioning](http://semver.org/).
 
 platforms badge
 swift testing during CI
+added all attributes and paragraph style settings but accessibility ones
 
 # [0.0.5] - 2020-03-21
 

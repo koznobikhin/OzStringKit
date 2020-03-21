@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name           = 'OzStringKit'
-    s.version        = '0.0.5'
+    s.version        = '0.0.6'
     s.summary        = 'NSAttributedString creation with Swift 5 string interpolation.'
     s.homepage       = 'https://github.com/koznobikhin/OzStringKit'
     s.license        = { :type => 'MIT' }
