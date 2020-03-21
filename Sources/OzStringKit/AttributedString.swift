@@ -20,6 +20,55 @@ import Foundation
     public typealias OzFont = UIFont
 #endif
 
+public enum LigatureUsage: Int {
+    /// don't use ligatures
+    case none = 0
+
+    /// use default ligatures
+    case `default` = 1
+
+    #if os(macOS)
+    /// use all ligature
+    case all = 2
+    #endif
+}
+
+public enum VerticalGlyphForm: Int {
+    case horizontalText = 0
+    case verticalText = 1
+}
+
+public enum WritingDirection: Int {
+    case leftToRightEmbedding = 0
+    case rightToLeftEmbedding = 1
+    case leftToRightOverride = 2
+    case rightToLeftOverride = 3
+}
+
+extension WritingDirection {
+    public init?(direction: NSWritingDirection, format: NSWritingDirectionFormatType) {
+        switch (direction, format) {
+        case (.leftToRight, .embedding):
+            self = .leftToRightEmbedding
+
+        case (.rightToLeft, .embedding):
+            self = .rightToLeftEmbedding
+
+        case (.leftToRight, .override):
+            self = .leftToRightOverride
+
+        case (.rightToLeft, .override):
+            self = .rightToLeftOverride
+
+        case (.natural, _):
+            return nil
+
+        @unknown default:
+            return nil
+        }
+    }
+}
+
 /// Creates NSAttributedString with string interpolation.
 ///
 /// - parameter value: string interpolation with NSAttributedString attributes.
@@ -173,6 +222,18 @@ extension AttributedString {
             return .init(attributes: [.backgroundColor: color])
         }
 
+        /// Sets the character’s offset from the baseline.
+        /// - parameter value: indicates the character’s offset from the baseline, in points.
+        public static func baselineOffset(_ value: CGFloat) -> Attribute {
+            return .init(attributes: [.baselineOffset: value])
+        }
+
+        /// Sets the log of the expansion factor to be applied to glyphs.
+        /// - parameter value: indicates the log of the expansion factor to be applied to glyphs.
+        public static func expansion(_ value: CGFloat) -> Attribute {
+            return .init(attributes: [.expansion: value])
+        }
+
         /// Sets the specified font for interpolation.
         /// - parameter font: the font to be used for string.
         public static func font(_ font: OzFont) -> Attribute {
@@ -199,6 +260,12 @@ extension AttributedString {
         /// - parameter value: the value of kerning.
         public static func kern(_ value: CGFloat) -> Attribute {
             return .init(attributes: [.kern: value])
+        }
+
+        /// Ligatures cause specific character combinations to be rendered using a single custom glyph that corresponds to those characters.
+        /// - parameter value: ligatures usage.
+        public static func ligature(_ value: LigatureUsage) -> Attribute {
+            return .init(attributes: [.ligature: value.rawValue])
         }
 
         /// Sets the specified URL for interpolation.
@@ -292,6 +359,12 @@ extension AttributedString {
             return .init(attributes: [.strokeWidth: value])
         }
 
+        /// Specifies a text effect.
+        /// - parameter value: text effect.
+        public static func textEffect(_ value: String) -> Attribute {
+            return .init(attributes: [.textEffect: value])
+        }
+
         /// Sets the underline settings to be applied to text in interpolation.
         /// - parameter value: underline style.
         /// - parameter color: underline color.
@@ -313,18 +386,58 @@ extension AttributedString {
         public static func underlineStyle(_ value: NSUnderlineStyle) -> Attribute {
             return .init(attributes: [.underlineStyle: value.rawValue])
         }
+
+#if os(macOS)
+        public static func verticalGlyphForm(_ value: VerticalGlyphForm) -> Attribute {
+            return .init(attributes: [.verticalGlyphForm: value.rawValue])
+        }
+#else
+        @available(*, unavailable, message: "In iOS, horizontal text is always used and specifying a different value is undefined.")
+        public static func verticalGlyphForm(_ value: VerticalGlyphForm) -> Attribute {
+            return .init(attributes: [:])
+        }
+#endif
+
+        /// Sets writingDirection overrides.
+        /// - parameter settings: specifies nested levels of writing direction overrides, in order from outermost to innermost.
+        public static func writingDirection(_ settings: WritingDirection...) -> Attribute {
+            return .writingDirection(settings)
+        }
+
+        /// Sets writingDirection overrides.
+        /// - parameter settings: specifies nested levels of writing direction overrides, in order from outermost to innermost.
+        public static func writingDirection(_ settings: [WritingDirection]) -> Attribute {
+            let settingValues = settings.map { $0.rawValue }
+            return .init(attributes: [.writingDirection: settingValues])
+        }
     }
 }
 
 #if os(macOS)
 // MARK: - MacOS
 extension AttributedString.Attribute {
+    public static func cursor(_ cursor: NSCursor) -> AttributedString.Attribute {
+        return .init(attributes: [.cursor: cursor])
+    }
+
+    public static func glyphInfo(_ info: NSGlyphInfo) -> AttributedString.Attribute {
+        return .init(attributes: [.glyphInfo: info])
+    }
+
+    public static func markedClauseSegment(_ value: Int) -> AttributedString.Attribute {
+        return .init(attributes: [.markedClauseSegment: value])
+    }
+
     public static func superscript(_ value: Double) -> AttributedString.Attribute {
         return .init(attributes: [.superscript: value])
     }
 
+    public static func textAlternatives(_ value: NSTextAlternatives) -> AttributedString.Attribute {
+        return .init(attributes: [.textAlternatives: value])
+    }
+
     public static func toolTip(_ value: String) -> AttributedString.Attribute {
-        return .init(attributes: [.toolTip: value as NSString])
+        return .init(attributes: [.toolTip: value])
     }
 }
 #endif
@@ -341,9 +454,46 @@ extension AttributedString.Attribute {
         })
     }
 
-    public static func lineBreakMode(_ value: NSLineBreakMode) -> AttributedString.Attribute {
+    public static func firstLineHeadIndent(_ value: CGFloat) -> AttributedString.Attribute {
         return .paragraphStyle(NSParagraphStyle.create { style in
-            style.lineBreakMode = value
+            style.firstLineHeadIndent = value
+        })
+    }
+
+    public static func headIndent(_ value: CGFloat) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.headIndent = value
+        })
+    }
+
+    public static func tailIndent(_ value: CGFloat) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.tailIndent = value
+        })
+    }
+
+    public static func lineHeightMultiple(_ value: CGFloat) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.lineHeightMultiple = value
+        })
+    }
+
+    public static func minimumLineHeight(_ value: CGFloat) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.minimumLineHeight = value
+        })
+    }
+
+    public static func maximumLineHeight(_ value: CGFloat) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.maximumLineHeight = value
+        })
+    }
+
+    public static func lineHeight(_ value: CGFloat) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.minimumLineHeight = value
+            style.maximumLineHeight = value
         })
     }
 
@@ -359,12 +509,89 @@ extension AttributedString.Attribute {
         })
     }
 
+    public static func paragraphSpacingBefore(_ value: CGFloat) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.paragraphSpacingBefore = value
+        })
+    }
+
+    public static func tabStops(_ tabs: NSTextTab...) -> AttributedString.Attribute {
+        return .tabStops(tabs)
+    }
+
+    public static func tabStops(_ tabs: [NSTextTab]) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.tabStops = tabs
+        })
+    }
+
+    public static func defaultTabInterval(_ value: CGFloat) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.defaultTabInterval = value
+        })
+    }
+
+    public static func lineBreakMode(_ value: NSLineBreakMode) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.lineBreakMode = value
+        })
+    }
+
+    public static func hyphenationFactor(_ value: Float) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.hyphenationFactor = value
+        })
+    }
+
+    public static func allowsDefaultTighteningForTruncation(_ value: Bool) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.allowsDefaultTighteningForTruncation = value
+        })
+    }
+
     public static func baseWritingDirection(_ value: NSWritingDirection) -> AttributedString.Attribute {
         return .paragraphStyle(NSParagraphStyle.create { style in
             style.baseWritingDirection = value
         })
     }
 }
+
+#if os(macOS)
+// MARK: - mac os paragraph style
+extension AttributedString.Attribute {
+    public static func textBlocks(_ blocks: NSTextBlock...) -> AttributedString.Attribute {
+        return .textBlocks(blocks)
+    }
+
+    public static func textBlocks(_ blocks: [NSTextBlock]) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.textBlocks = blocks
+        })
+    }
+
+    public static func textLists(_ lists: NSTextList...) -> AttributedString.Attribute {
+        return .textLists(lists)
+    }
+
+    public static func textLists(_ lists: [NSTextList]) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.textLists = lists
+        })
+    }
+
+    public static func tighteningFactorForTruncation(_ value: Float) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.tighteningFactorForTruncation = value
+        })
+    }
+
+    public static func headerLevel(_ value: Int) -> AttributedString.Attribute {
+        return .paragraphStyle(NSParagraphStyle.create { style in
+            style.headerLevel = value
+        })
+    }
+}
+#endif
 
 // MARK: - private
 extension AttributedString.StringInterpolation {
