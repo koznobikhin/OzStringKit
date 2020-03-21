@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5C6BE592425913B00A877EE /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5C6BE582425913B00A877EE /* Settings.bundle */; };
 		D9A12776235699C600D136A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A12775235699C600D136A5 /* AppDelegate.swift */; };
 		D9A12778235699C600D136A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A12777235699C600D136A5 /* SceneDelegate.swift */; };
 		D9A1277A235699C600D136A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A12779235699C600D136A5 /* ViewController.swift */; };
 		D9A1277D235699C600D136A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9A1277B235699C600D136A5 /* Main.storyboard */; };
 		D9A1277F235699C700D136A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9A1277E235699C700D136A5 /* Assets.xcassets */; };
 		D9A12782235699C700D136A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9A12780235699C700D136A5 /* LaunchScreen.storyboard */; };
-		D9A1278B2356A25E00D136A5 /* OzStringKit in Frameworks */ = {isa = PBXBuildFile; productRef = D9A1278A2356A25E00D136A5 /* OzStringKit */; };
+		D9A1278B2356A25E00D136A5 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D9A1278A2356A25E00D136A5 /* SwiftPackageProductDependency */; };
 		FA3746024C1D8F63CE2B6377 /* Pods_iOS_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B641CFDD6FACCCAD4F5E9C /* Pods_iOS_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 		00B641CFDD6FACCCAD4F5E9C /* Pods_iOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5C1FC5E4D55AE5DED8440C /* Pods-iOS Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example.release.xcconfig"; path = "Target Support Files/Pods-iOS Example/Pods-iOS Example.release.xcconfig"; sourceTree = "<group>"; };
 		68CD5FD3422B36433AE8DF10 /* Pods-iOS Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example.debug.xcconfig"; path = "Target Support Files/Pods-iOS Example/Pods-iOS Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C5C6BE582425913B00A877EE /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D9A12772235699C600D136A5 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A12775235699C600D136A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9A12777235699C600D136A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9A1278B2356A25E00D136A5 /* OzStringKit in Frameworks */,
+				D9A1278B2356A25E00D136A5 /* BuildFile in Frameworks */,
 				FA3746024C1D8F63CE2B6377 /* Pods_iOS_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +58,7 @@
 		D9A12769235699C600D136A5 = {
 			isa = PBXGroup;
 			children = (
+				C5C6BE582425913B00A877EE /* Settings.bundle */,
 				D9A12774235699C600D136A5 /* Sources */,
 				D9A12773235699C600D136A5 /* Products */,
 				D9A127892356A25E00D136A5 /* Frameworks */,
@@ -112,7 +115,7 @@
 			);
 			name = "iOS Example";
 			packageProductDependencies = (
-				D9A1278A2356A25E00D136A5 /* OzStringKit */,
+				D9A1278A2356A25E00D136A5 /* SwiftPackageProductDependency */,
 			);
 			productName = "iOS Example";
 			productReference = D9A12772235699C600D136A5 /* iOS Example.app */;
@@ -156,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C6BE592425913B00A877EE /* Settings.bundle in Resources */,
 				D9A12782235699C700D136A5 /* LaunchScreen.storyboard in Resources */,
 				D9A1277F235699C700D136A5 /* Assets.xcassets in Resources */,
 				D9A1277D235699C600D136A5 /* Main.storyboard in Resources */,
@@ -415,7 +419,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D9A1278A2356A25E00D136A5 /* OzStringKit */ = {
+		D9A1278A2356A25E00D136A5 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = OzStringKit;
 		};

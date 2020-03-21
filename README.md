@@ -1,6 +1,8 @@
 # OzStringKit
 NSAttributedString creation with Swift 5 string interpolation.
 
+(demo.png)
+
 ## Installation
 
 Add this to your project using Swift Package Manager. In Xcode that is simply: File > Swift Packages > Add Package Dependency... and you're done. Alternative installations options are shown below for legacy projects.

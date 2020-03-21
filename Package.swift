@@ -5,6 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "OzStringKit",
+    platforms: [
+        .iOS(.v10),
+        .macOS(.v10_11),
+        .watchOS(.v2),
+        .tvOS(.v9),
+    ],
     products: [
         .library(
             name: "OzStringKit",

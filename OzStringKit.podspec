@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.license        = { :type => 'MIT', :file => 'LICENSE' }
     s.author         = { 'Konstantin Oznobikhin' => 'koznobikhin@gmail.com' }
     s.source         = { :git => 'https://github.com/koznobikhin/OzStringKit.git', :tag => s.version.to_s }
-    s.frameworks     = 'Foundation'
+    s.frameworks     = 'Foundation', 'UIKit'
 
     s.ios.deployment_target = '10.0'
 
