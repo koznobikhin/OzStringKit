@@ -94,6 +94,7 @@ extension AttributedString: ExpressibleByStringInterpolation {
             self.attributedString.append(attributedInterpolation)
         }
 
+#if !os(watchOS)
         /// Appends the specified attachment to the NSAttributedString.
         /// - parameter attachment: the attachment to be added.
         public mutating func appendInterpolation(attachment: NSTextAttachment) {
@@ -126,6 +127,7 @@ extension AttributedString: ExpressibleByStringInterpolation {
 
             self.appendInterpolation(attachment: attachment)
         }
+#endif
 
         /// Appends the specified string with the specified attributes to the NSAttributedString instance being built with interpolation.
         /// - parameter string: the string to be added.
