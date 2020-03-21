@@ -4,6 +4,18 @@ OzStringKit adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Master](https://github.com/koznobikhin/OzStringKit)
 
+# [0.0.7] - 2020-03-21
+
+### Changed
+
+extracted attributes into separate files
+extracted macOS specific code to separate folder and update podspec
+
+prevent swiftlint from triggering on documentation comments
+
+disabled diagnostics;
+run swiftlint before builds
+
 # [0.0.6] - 2020-03-21
 
 ### Added
