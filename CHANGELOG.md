@@ -4,6 +4,13 @@ OzStringKit adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Master](https://github.com/koznobikhin/OzStringKit)
 
+# [0.0.6] - 2020-03-21
+
+### Added
+
+platforms badge
+swift testing during CI
+
 # [0.0.5] - 2020-03-21
 
 ### Changed
