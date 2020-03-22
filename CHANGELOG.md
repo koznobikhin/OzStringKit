@@ -9,7 +9,8 @@ OzStringKit adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 simplified code;
-added support for interpolating generic values
+added support for interpolating generic values;
+improved tests
 
 # [0.0.7] - 2020-03-21
 
