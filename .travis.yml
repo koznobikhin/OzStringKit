@@ -21,4 +21,7 @@ script:
   # Build Example in Debug
   - xcodebuild -sdk iphonesimulator -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty -c
 
-  - swift test
+  - swift package generate-xcodeproj
+  - bundle exec fastlane scan --code_coverage
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
