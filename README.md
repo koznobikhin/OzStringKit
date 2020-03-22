@@ -1,6 +1,6 @@
 # OzStringKit
 [![Travis (.com)](https://img.shields.io/travis/com/koznobikhin/OzStringKit)](https://travis-ci.com/github/koznobikhin/OzStringKit)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/koznobikhin/OzStringKit)](https://github.com/koznobikhin/OzStringKit/releases/tag/0.0.7)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/koznobikhin/OzStringKit)](https://github.com/koznobikhin/OzStringKit/releases/tag/0.0.8)
 [![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Cocoapods](https://img.shields.io/cocoapods/v/OzStringKit)](https://cocoapods.org/pods/OzStringKit)
@@ -41,7 +41,7 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/koznobikhin/OzStringKit.git", .upToNextMajor(from: "0.0.1"))
+    .package(url: "https://github.com/koznobikhin/OzStringKit.git", .upToNextMajor(from: "0.0.8"))
 ]
 ```
 

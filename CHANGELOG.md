@@ -4,6 +4,13 @@ OzStringKit adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Master](https://github.com/koznobikhin/OzStringKit)
 
+# [0.0.8] - 2020-03-23
+
+### Changed
+
+simplified code;
+added support for interpolating generic values
+
 # [0.0.7] - 2020-03-21
 
 ### Changed
