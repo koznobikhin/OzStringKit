@@ -54,19 +54,6 @@ extension AttributedString: ExpressibleByStringInterpolation {
             self.attributedString.append(attributedInterpolation)
         }
 
-        /// Appends the specified string to the NSAttributedString instance being built with interpolation.
-        /// - parameter string: the string to be added.
-        public mutating func appendInterpolation(_ string: String) {
-            let attributedInterpolation = NSAttributedString(string: string)
-            self.attributedString.append(attributedInterpolation)
-        }
-
-        /// Appends the specified attributed string to the NSAttributedString instance being built with interpolation.
-        /// - parameter attributedString: the string to be added.
-        public mutating func appendInterpolation(_ attributedString: NSAttributedString) {
-            self.attributedString.append(attributedString)
-        }
-
         /// Appends the specified string with the specified attributes to the NSAttributedString instance being built with interpolation.
         /// - parameter string: the string to be added.
         /// - parameter attributes: NSAttributedString attributes to be applied to the string.
@@ -123,35 +110,62 @@ extension AttributedString: ExpressibleByStringInterpolation {
         }
 #endif
 
-        /// Appends the specified string with the specified attributes to the NSAttributedString instance being built with interpolation.
-        /// - parameter string: the string to be added.
-        /// - parameter attribute: attributes to be applied to the string.
-        public mutating func appendInterpolation(_ string: String, _ attribute: Attribute...) {
-            self.appendInterpolation(string, attribute)
+        /// Appends the specified generic value with the specified attributes to the NSAttributedString instance being built with interpolation.
+        /// - parameter value: the value to be added.
+        /// - parameter attributes: array of attributes to be applied to the string.
+        public mutating func appendInterpolation<T: AttributedStringConvertible>(
+            _ value: T,
+            _ attributes: Attribute...) {
+            self.appendInterpolation(value, attributes)
         }
 
-        /// Appends the specified string with the specified attributes to the NSAttributedString instance being built with interpolation.
-        /// - parameter string: the string to be added.
-        /// - parameter attributes: array pf attributes to be applied to the string.
-        public mutating func appendInterpolation(_ string: String, _ attributes: [Attribute]) {
+        /// Appends the specified generic value with the specified attributes to the NSAttributedString instance being built with interpolation.
+        /// - parameter value: the value to be added.
+        /// - parameter attributes: array of attributes to be applied to the string.
+        public mutating func appendInterpolation<T: AttributedStringConvertible>(
+            _ value: T,
+            _ attributes: [Attribute]) {
             let attributes = self.mergeAttributes(attributes)
-            self.appendInterpolation(string, attributes: attributes)
+            self.appendInterpolation(value.attributedString, attributes: attributes)
         }
 
-        /// Appends the specified string with the specified attributes to the NSAttributedString instance being built with interpolation.
-        /// - parameter attributedString: the string to be added.
-        /// - parameter attribute: attributes to be applied to the string.
-        public mutating func appendInterpolation(_ attributedString: NSAttributedString, _ attribute: Attribute...) {
-            self.appendInterpolation(attributedString, attribute)
+        /// Appends the description string of the specified value with the specified attributes to the NSAttributedString instance being built with interpolation.
+        /// - parameter value: the value to be added.
+        /// - parameter attributes: array of attributes to be applied to the string.
+        public mutating func appendInterpolation<T>(_ value: T, _ attributes: Attribute...) {
+            self.appendInterpolation(value, attributes)
         }
 
-        /// Appends the specified string with the specified attributes to the NSAttributedString instance being built with interpolation.
-        /// - parameter attributedString: the string to be added.
-        /// - parameter attributes: array pf attributes to be applied to the string.
-        public mutating func appendInterpolation(_ attributedString: NSAttributedString, _ attributes: [Attribute]) {
-            let attributes = self.mergeAttributes(attributes)
-            self.appendInterpolation(attributedString, attributes: attributes)
+        /// Appends the description string of the specified value with the specified attributes to the NSAttributedString instance being built with interpolation.
+        /// - parameter value: the value to be added.
+        /// - parameter attributes: array of attributes to be applied to the string.
+        public mutating func appendInterpolation<T>(_ value: T, _ attributes: [Attribute]) {
+            self.appendInterpolation("\(value)", attributes)
         }
+    }
+}
+
+/// Defines types that could be converted into NSAttributedString.
+public protocol AttributedStringConvertible {
+    /// Gets an instance of NSAttributedString describing this object.
+    var attributedString: NSAttributedString { get }
+}
+
+/// AttributedStringConvertible support for AttributedString type.
+extension AttributedString: AttributedStringConvertible {
+}
+
+/// AttributedStringConvertible support for plain String type.
+extension String: AttributedStringConvertible {
+    public var attributedString: NSAttributedString {
+        NSAttributedString(string: self)
+    }
+}
+
+/// AttributedStringConvertible support for NSAttributedString type.
+extension NSAttributedString: AttributedStringConvertible {
+    public var attributedString: NSAttributedString {
+        self
     }
 }
 
